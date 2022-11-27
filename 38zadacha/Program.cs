@@ -2,35 +2,33 @@
 // Найдите разницу между максимальным и минимальным элементов массива.
 // [3 7 22 2 78] -> 76
 
-int[] FillArray(int size)
+Console.WriteLine("Введите длину массива");
+int size = Convert.ToInt32(Console.ReadLine());
+double[] arr = new double[size];
+FillArr(arr);
+PrintArr(arr);
+double max = arr[0];
+double min = arr[0];
+for (int i = 0; i < arr.Length; i++)
 {
-    
-    int[] arr = new int[size];
-    for(int i = 0; i < arr.Length; i++)
-    {
-        arr[i] = new Random().Next(1,500);
-    }
-    return arr;
+    if (arr[i] > max) max = arr[i];
+    else if (arr[i] < min) min = arr[i];
 }
 
-Console.Write("Введите длину массива: ");
-int num = Convert.ToInt32(Console.ReadLine());
-int[] array = FillArray(num);
-Console.Write("Ваш массив: ");
-Console.WriteLine(string.Join(", ", array));
-int arrayMax = 0;
-for (int i = 0; i < array.Length; i++)
+void FillArr(double[] arr)
 {
-    int max = i;
-    for (int o = i + 1; o < array.Length; o++)
+    for (int i = 0; i < arr.Length; i++)
     {
-        if (array[o] > array[max])
-        {
-            max = o;
-            
-        }
-        arrayMax = array[max];
-        Console.WriteLine(arrayMax);
+                arr[i] = Convert.ToDouble(new Random().Next(100, 100000) / 100.0);
     }
 }
-Console.WriteLine(arrayMax);
+
+void PrintArr(double[] arr)
+{
+    for (int i = 0; i < arr.Length; i++)
+    continue;
+    Console.WriteLine("Ваш массив: " + ("[" + String.Join(", ", arr) + "]"));
+}
+
+double diff = max - min;
+Console.Write($"Разница между Max-{max} и Min-{min} равна: " + (Math.Round(diff, 2)));
